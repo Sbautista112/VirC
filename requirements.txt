@@ -1,0 +1,7 @@
+# Install into the venv with:
+#   .venv\Scripts\python -m pip install -r requirements.txt
+# [gpu] / [cuda,cudnn] pull in ONNX Runtime's CUDA build plus the CUDA and cuDNN
+# libraries as pip packages, so no separate CUDA install is needed.
+rembg[gpu]==2.0.87
+onnxruntime-gpu[cuda,cudnn]==1.31.1
+pillow==13.0.0

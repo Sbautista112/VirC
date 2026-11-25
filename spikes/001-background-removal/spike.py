@@ -8,6 +8,7 @@ Run from the repo root:
 """
 
 import time
+import statistics
 from pathlib import Path
 
 import onnxruntime as ort
@@ -23,7 +24,6 @@ MAX_SIDE = 1600  # phone photos are ~4000 px wide; nothing here needs that many 
 CELL = 256  # size of each square in the comparison grid
 
 
-# --- Your part ---------------------------------------------------------------
 
 
 def load_photo(path: Path) -> Image.Image:
@@ -42,12 +42,13 @@ def run_model(model_name: str, photos: list[Path]) -> dict[str, float]:
     session = new_session(model_name)
     end_load_s = time.perf_counter()
     load_s = end_load_s - start_load_s
+
     
     times = list()
     model_dir = OUTPUT / model_name
     model_dir.mkdir(parents=True, exist_ok=True)
     print(model_name, session.inner_session.get_providers())
-
+    remove(load_photo(photos[0]), session=session)
     #Background removal for each picture.
     for photo in photos:
         img = load_photo(photo)
@@ -56,7 +57,11 @@ def run_model(model_name: str, photos: list[Path]) -> dict[str, float]:
         remove_timer_end = time.perf_counter()
         output.save(model_dir / f"{photo.stem}.png")
         times.append(remove_timer_end - remove_timer_start)
-
+    return {
+        "load_s": load_s,
+        "mean_s": statistics.mean(times),
+        "max_s": max(times)
+    }
 
 
 def checkerboard(size: int, square: int = 16) -> Image.Image:

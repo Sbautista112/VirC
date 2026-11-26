@@ -45,4 +45,7 @@ Cutouts land in `output/<model>/`, plus `output/comparison.png` with every model
 
 ## Results
 
-_Fill in after running: the timing table, what you saw in the grid, anything surprising._
+1. u2net                    0.58     0.09     0.14
+2. isnet-general-use       12.99     0.21     0.36
+3. birefnet-general        74.34     4.94     6.75
+4. u2net_cloth_seg          6.88     0.25     0.30

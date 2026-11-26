@@ -1,0 +1,25 @@
+- **Date:** 11/25/2026
+
+## Context
+
+What problem are we solving? Which constraints matter (cost, speed, hardware, what I want to learn)?
+Trying to get more familiar with CNN models and how they work. For that I will make a virtual closet project and will compare different public models to measure their pros and cons.
+## Options considered
+
+   model                  load s   mean s    max s
+1. u2net                    0.58     0.09     0.14
+2. isnet-general-use       12.99     0.21     0.36
+3. birefnet-general        74.34     4.94     6.75
+4. u2net_cloth_seg          6.88     0.25     0.30
+
+## Decision
+
+Will go with u2net as overall the most the most fast in measurement categories. 
+
+## Why
+
+2. u2net                    0.58     0.09     0.14
+
+## Consequences
+
+These are values based on a locally downloaded model to results may differ depending on how and where we host this model other than locally so will have to be revisted at a later point.

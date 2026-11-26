@@ -8,12 +8,14 @@ Early. Building the image pipeline first.
 
 | Part | Status |
 |---|---|
-| Image pipeline | Spike 001: comparing background-removal models |
+| Image pipeline | Background removal: U²-Net chosen (spike 001). Next: taxonomy and labeled test set |
 | Database | Not started |
 | UI | Not started |
 
 ## Repo layout
 
+- `virc/`: the real pipeline code.
+- `eval/`: the labeled test set and labeling guide used to grade models.
 - `spikes/`: time-boxed experiments. Throwaway code, kept for the write-ups.
 - `docs/decisions/`: decision records explaining why things are built the way they are.
 - `data/photos/`: local test photos (git-ignored).
